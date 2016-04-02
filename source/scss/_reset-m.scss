@@ -1,0 +1,113 @@
+/**
+ * 样式重置
+ * @author limfa@qq.com
+ */
+@charset "UTF-8";
+*{
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font: inherit;
+    color: inherit;
+}
+html{
+    color: #000;
+    // in chrome ,the min line-height of <input> is 1.4em * 14px;why ? i do't know
+    font: normal 14px/1.4em sans-serif;
+    -webkit-overflow-scrolling : touch;
+    -webkit-text-size-adjust: none;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi;
+}
+html ,body{
+    background-color: #fff;
+    -webkit-user-select:none; 
+}
+input, button {
+    outline: none;
+}
+ul, ol {
+    list-style: none;
+}
+img {
+    vertical-align: middle;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+td, th {
+    padding: 0;
+}
+a {
+    background: transparent;
+    text-decoration:none;
+    
+    &:active, &:hover {
+        outline: 0;
+    }
+}
+pre {
+    overflow: auto;
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+// 
+button, select {
+    text-transform: none;
+}
+// 
+textarea {
+    overflow: auto;
+    resize: none;
+}
+// remove style webkit itself : "outline: -webkit-focus-ring-color auto 5px;"
+:focus {
+    outline: none;
+}
+html{
+    -webkit-overflow-scrolling : touch;
+    -webkit-text-size-adjust: none;
+    font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+html ,body{
+    -webkit-user-select:none; 
+}
+a, img {
+    -webkit-touch-callout: none; 
+}
+video::-webkit-media-controls-enclosure { 
+    display:none!important;
+}
+input[type="button"]{
+    -webkit-appearance:none; 
+}
+a {
+    -webkit-tap-highlight-color:rgba(255,255,255,0);  
+}
+// reset firefox private attr
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+// ?
+body {
+    word-wrap: break-word;
+}
+// ?
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+// ??
+textarea,input {
+    background: none;
+    padding: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+// ?
+button {
+    overflow: visible;
+    background-color: transparent
+}

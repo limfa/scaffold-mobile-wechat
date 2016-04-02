@@ -1,0 +1,47 @@
+@charset "UTF-8";
+// 只兼容chrome
+$supported-browsers: 'chrome';
+@import "compass";
+@import "./reset-m";
+@import "./pc-sprite";
+// @import "./animate
+
+// ----------------- reset -----------------
+/*去掉 type=number 加减 chrome*/
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+    -webkit-appearance: none !important;
+    margin: 0; 
+}
+/*去掉 type=number 加减 Firefox */
+input[type="number"]{-moz-appearance:textfield;}
+// ----------------- reset -----------------
+
+// ----------------- image sprite -----------------
+$icon-dir: 'icon';
+%inline-block{
+    @include inline-block;
+} 
+%icon-sprite{
+    @extend %inline-block;
+    @include _pc-sprite($icon-dir);
+}
+@include pc-sprite-all($icon-dir ,'%icon-sprite');
+// ----------------- image sprite -----------------
+
+// ----------------- variable -----------------
+$WIDTH: 750px;
+// ----------------- variable -----------------
+
+// ----------------- main -----------------
+html,body,body>section{
+    height: 100%;
+}
+body>section{
+    max-width: $WIDTH;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    min-height: 1125px;
+}
+// ----------------- main -----------------

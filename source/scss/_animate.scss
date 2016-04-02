@@ -1,0 +1,196 @@
+/**
+ * 动画库
+ * @author limfa@qq.com
+ */
+@charset "UTF-8";
+@import "compass";
+
+%anim{
+    @include transition(all 1s ease 0s);
+    @include transition-timing-function(cubic-bezier(0.465, 0.320, 0.670, 1.315));
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000;
+    -webkit-perspective: 1000;
+}
+
+.anim-sizeD{
+    @extend %anim;
+
+    @include transform(scale3d(3 ,3 ,3));
+    opacity: 0;
+
+    .anim &{
+        @include transform(scale3d(1 ,1 ,1));
+        opacity: 1;
+    }
+}
+.anim-sizeA{
+    @extend %anim;
+
+    @include transform(scale3d(0 ,0 ,0));
+    opacity: 0;
+
+    .anim &{
+        @include transform(scale3d(1 ,1 ,1));
+        opacity: 1;
+    }
+}
+.anim-lateL{
+    @extend %anim;
+
+    @include transform(translate3d(-1000px, 0, 0));
+
+    .anim &{
+        @include transform(none);
+    }
+}
+.anim-lateR{
+    @extend %anim;
+    
+    @include transform( translate3d(1000px, 0, 0));
+
+    .anim &{
+        @include transform( none);
+    }
+}
+.anim-lateU{
+    @extend %anim;
+
+    opacity: 0;
+    @include transform( translate3d(0, 2000px, 0));
+
+    .anim &{
+        opacity: 1;
+        @include transform( none);
+    }
+}
+.anim-lateD{
+    @extend %anim;
+
+    opacity: 0;
+    @include transform( translate3d(0, -2000px, 0));
+
+    .anim &{
+        opacity: 1;
+        @include transform( none);
+    }
+}
+.anim-lateU100{
+    @extend %anim;
+    opacity: 0;
+    @include transform( translate3d(0, 100%, 0));
+
+    .anim &{
+        opacity: 1;
+        @include transform( none);
+    }
+}
+.anim-lateD100{
+    @extend %anim;
+
+    opacity: 0;
+    @include transform( translate3d(0, -100%, 0));
+
+    .anim &{
+        opacity: 1;
+        @include transform( none);
+    }
+}
+.anim-flash{
+    .anim &{
+        @include animation(flash 1s ease infinite 0s);
+    }
+    @include keyframes(flash) {
+      0% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+}
+
+.anim-wobble{
+    .anim &{
+        @include animation(wobble 1s ease 2 1s);
+    }
+    @include keyframes(wobble) {
+      from {
+        @include transform( none);
+      }
+      15% {
+        @include transform( translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg));
+      }
+      30% {
+        @include transform( translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg));
+      }
+      45% {
+        @include transform( translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg));
+      }
+      60% {
+        @include transform( translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg));
+      }
+      75% {
+        @include transform( translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg));
+      }
+      to {
+        @include transform( none);
+      }
+    }
+}
+
+.anim-rotate{
+    .anim &{
+        @include animation(rotate 3s linear infinite 0s);
+    }
+    @include keyframes(rotate) {
+      0% {
+        @include transform(rotate(0deg) translateZ(0));
+      }
+      50%{
+        @include transform(rotate(180deg) translateZ(0));
+      }
+      100% {
+        @include transform(rotate(360deg) translateZ(0));
+      }
+    }
+}
+
+.anim-lineanim{
+    visibility: hidden;
+    .anim &{
+        @include animation(line-anim 3s linear infinite);
+    }
+    @include keyframes(line-anim) {
+        0%{
+            visibility: visible;
+            @include transform( scale3d(1 ,1 ,1));
+            border-bottom-color: rgba(#fff ,1);
+        }
+        100%{
+            visibility: visible;
+            @include transform( scale3d(3 ,3 ,3));
+            border-bottom-color: rgba(#fff ,0);
+        }
+    }
+}
+@for $i from 0 through 10 {
+    .anim-dur5-#{$i} {
+        @include transition-duration(#{$i/2}s !important);
+        @include animation-duration(#{$i/2}s !important);
+    }
+}
+
+@for $i from 0 through 12 {
+    .anim-del-#{$i} {
+        @include transition-delay(#{$i/2.5}s !important);
+        @include animation-delay(#{$i/4}s !important);
+    }
+}
