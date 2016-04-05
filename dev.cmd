@@ -1,5 +1,5 @@
 @echo off
 
-cd src
+cd source
 START compass watch
 START fis3 release -wL
